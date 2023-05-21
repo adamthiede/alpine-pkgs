@@ -34,7 +34,7 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
+
 sha512sums="
 c154747251585a3ff8217104eadc8c634a6d4e673bdbce80bce4b149f3a0d9815a84cbe846791c3d3cfc2e429667c2f6951cdd9604d226a9b31b81bd7100cc7a  gnome-themes-extra-3.28.tar.gz
 "
-
