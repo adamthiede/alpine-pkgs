@@ -27,7 +27,7 @@ kanshictl() {
 	amove usr/bin/kanshictl
 }
 
+
 sha512sums="
 21580c6d950c33ce80a3d39e71ae8352c23c96d89827b79f4a294ccade87026c1ce294a5f9aa9b58e06f7930a3885ab9a54400b7289dfbee18a2a1a53a55709b  kanshi-1.3.1.tar.gz
 "
-

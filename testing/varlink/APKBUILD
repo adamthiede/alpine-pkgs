@@ -10,12 +10,11 @@ arch="all"
 license="Apache-2.0"
 depends=""
 makedepends=""
-checkdepends=""
+checkdepends="bash"
 install=""
 subpackages="$pkgname-dev $pkgname-bash-completion libvarlink"
 source="https://github.com/varlink/$_reponame/archive/$pkgver/$_reponame-$pkgver.tar.gz"
 builddir="$srcdir/$_reponame-$pkgver"
-
 build() {
 	abuild-meson . output
 	meson compile -C output
