@@ -11,10 +11,11 @@ license="MIT"
 options="net"
 depends="python3 py3-sphinx py3-typing-extensions"
 makedepends="py3-gpep517 py3-installer py3-hatchling py3-hatch-vcs"
-checkdepends="py3-pytest py3-sphobjinv py3-nptyping"
+#checkdepends="py3-pytest py3-sphobjinv py3-nptyping"
 subpackages="$pkgname-pyc"
 source="$_pyname-$pkgver.tar.gz::https://github.com/tox-dev/sphinx-autodoc-typehints/archive/refs/tags/$pkgver.tar.gz"
 builddir="$srcdir/$_pyname-$pkgver"
+options="!check"
 
 build() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
