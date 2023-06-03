@@ -1,0 +1,32 @@
+# Contributor: Adam Thiede <me@adamthiede.com>
+# Maintainer: Adam Thiede <me@adamthiede.com>
+pkgname=py3-pynput
+pkgver=1.7.6
+pkgrel=0
+pkgdesc="This library allows you to control and monitor input devices."
+options="!check" # requies a running X server
+url="https://github.com/moses-palmer/pynput"
+arch="noarch"
+license="LGPL-3.0-or-later"
+depends="python3"
+makedepends="py3-setuptools py3-wheel py3-pip py3-sphinx"
+checkdepends="linux-headers python3-dev"
+subpackages="$pkgname-pyc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/moses-palmer/pynput/archive/refs/tags/v$pkgver.tar.gz"
+builddir="$srcdir/pynput-$pkgver"
+
+build() {
+	python3 setup.py build
+}
+
+check() {
+	python3 setup.py test
+}
+
+package() {
+	python3 setup.py install --skip-build --root="$pkgdir"
+}
+
+sha512sums="
+40c0862e4ab11c0f55e5eda9eaf204cecbf21cf801198b3a9b69cb5a8aca6c5d11e40c170f4209ccd0495495a3bdcd69414bf2b2e41ba25e1f87b83585956166  py3-pynput-1.7.6.tar.gz
+"

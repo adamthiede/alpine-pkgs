@@ -1,0 +1,31 @@
+# Contributor: Adam Thiede <me@adamthiede.com>
+# Maintainer: Adam Thiede <me@adamthiede.com>
+pkgname=keepmenu
+pkgver=1.3.1
+pkgrel=0
+pkgdesc="This library allows you to control and monitor input devices."
+options="!check" # requies a running X server
+url="https://github.com/moses-palmer/pynput"
+arch="noarch"
+license="GPL-3.0-or-later"
+depends="python3 py3-pynput py3-keepass"
+makedepends="py3-setuptools py3-wheel"
+subpackages="$pkgname-pyc $pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/firecat53/keepmenu/archive/refs/tags/$pkgver.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	python3 setup.py build
+}
+
+check() {
+	python3 setup.py test
+}
+
+package() {
+	python3 setup.py install --skip-build --root="$pkgdir"
+}
+
+sha512sums="
+977ffe63cb56a0e28b8f6096b221d6f3df9bb8bacdb1ea5d0719ec732b02f31450d10e4073195a687fe759e84148af78fe634f1a51aa2c6f36c34bd13c38e9fd  keepmenu-1.3.1.tar.gz
+"
