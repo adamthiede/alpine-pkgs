@@ -1,0 +1,41 @@
+# Contributor: Miles Alan <m@milesalan.com>
+# Maintainer: ScrumpyJack <scrumpyjack@st.ilet.to>
+pkgname=neosurf
+pkgver=0.11
+pkgrel=0
+pkgdesc="A NetSurf fork with various improvements"
+url="https://github.com/CobaltBSD/neosurf/"
+arch="all"
+license="GPL-2.0"
+makedepends="cmake gperf flex bison pkgconf libxml2-dev libjpeg-turbo-dev curl-dev libpsl-dev libwebp-dev gtk+3.0-dev bash"
+subpackages="$pkgname-gtk3"
+source="$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/archive/refs/tags/v$pkgver.tar.gz
+libcss-set-shell-to-env.patch
+"
+
+builddir="$srcdir"/$pkgname-$pkgver
+
+export CFLAGS="$CFLAGS -fcommon"
+
+build() {
+	mkdir -p build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
+	make
+}
+
+gtk3() {
+	amove /usr/bin/neosurf-gtk3
+	amove /usr/share/neosurf-gtk3
+}
+
+package() {
+	cd build
+	make install
+}
+
+
+sha512sums="
+11bb64aaca1f13a36efc284452364994f1305fed30f83230400b3636ffcf55faf1685a9bc0cfb23bd18aa8adc5b84f7db2562bcd3abf6cf04f3b5302ef66475d  neosurf-0.11.tar.gz
+1d68189f48c06f5bd83ad8562f2dec9da0574b2badf29b01346bead9b6687187195e959317be7e9d1bf2d796a28f07b4291db203b36696132e1b61460454ebc0  libcss-set-shell-to-env.patch
+"
