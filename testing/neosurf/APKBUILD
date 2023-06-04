@@ -23,8 +23,8 @@ export CFLAGS="$CFLAGS -fcommon"
 build() {
 	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
-	make -j1
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make -j1 DESTDIR="$pkgdir"
 }
 
 #gtk3() {
@@ -34,7 +34,8 @@ build() {
 
 package() {
 	cd build
-	make install
+	#make install
+	make install DESTDIR="$pkgdir"
 }
 
 
