@@ -1,7 +1,7 @@
 # Contributor: Miles Alan <m@milesalan.com>
 # Maintainer: ScrumpyJack <scrumpyjack@st.ilet.to>
 pkgname=neosurf
-pkgver=0.11
+pkgver=0.12
 _commit="433dafd46bc486bc8f5af93355787674d83105d0"
 pkgrel=0
 pkgdesc="A NetSurf fork with various improvements"
@@ -11,12 +11,11 @@ license="GPL-2.0"
 makedepends="cmake gperf flex bison pkgconf libxml2-dev libjpeg-turbo-dev curl-dev libpsl-dev libwebp-dev gtk+3.0-dev bash libpng-dev libxkbcommon-dev wayland-protocols wayland-dev expat-dev openssl-dev perl"
 #subpackages="$pkgname-gtk3"
 options="!check" # no tests
-source="
-$pkgname-$_commit.tar.gz::https://github.com/CobaltBSD/neosurf/archive/$_commit.tar.gz
-"
-#$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/releases/download/v$pkgver/neosurf-0.11.tar.gz
+#source="$pkgname-$_commit.tar.gz::https://github.com/CobaltBSD/neosurf/archive/$_commit.tar.gz"
+source="$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/archive/refs/tags/v$pkgver.tar.gz"
 
-builddir="$srcdir"/$pkgname-$_commit
+#builddir="$srcdir"/$pkgname-$_commit
+builddir="$srcdir/$pkgname-$pkgver"
 
 export CFLAGS="$CFLAGS -fcommon"
 
@@ -40,5 +39,5 @@ package() {
 
 
 sha512sums="
-7373d611334a5f514ac25700d158e3a31269896fac7881af42577a28137832b064593f356b1275539d3230deee618b726e181f6daa68b64643144e8d2d876df7  neosurf-433dafd46bc486bc8f5af93355787674d83105d0.tar.gz
+c5736fca8b0362896eaca48944e871af4b1d93fb8e96056dbac82b848c064e7aa74ececa87b4e3c83537009a026430aeec0088ce1af3b5d793eedf42b2f75085  neosurf-0.12.tar.gz
 "
