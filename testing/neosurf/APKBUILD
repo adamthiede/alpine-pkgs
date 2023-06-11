@@ -1,7 +1,7 @@
 # Contributor: Miles Alan <m@milesalan.com>
 # Maintainer: ScrumpyJack <scrumpyjack@st.ilet.to>
 pkgname=neosurf
-pkgver=0.12
+pkgver=0.14
 _commit="433dafd46bc486bc8f5af93355787674d83105d0"
 pkgrel=0
 pkgdesc="A NetSurf fork with various improvements"
@@ -12,10 +12,14 @@ makedepends="cmake gperf flex bison pkgconf libxml2-dev libjpeg-turbo-dev curl-d
 #subpackages="$pkgname-gtk3"
 options="!check" # no tests
 #source="$pkgname-$_commit.tar.gz::https://github.com/CobaltBSD/neosurf/archive/$_commit.tar.gz"
-source="$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/archive/refs/tags/v$pkgver.tar.gz"
+source="
+$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/archive/refs/tags/v$pkgver.tar.gz
+file.patch
+"
+
 
 #builddir="$srcdir"/$pkgname-$_commit
-builddir="$srcdir/$pkgname-$pkgver"
+#builddir="$srcdir/$pkgname-$pkgver"
 
 export CFLAGS="$CFLAGS -fcommon"
 
@@ -39,5 +43,6 @@ package() {
 
 
 sha512sums="
-c5736fca8b0362896eaca48944e871af4b1d93fb8e96056dbac82b848c064e7aa74ececa87b4e3c83537009a026430aeec0088ce1af3b5d793eedf42b2f75085  neosurf-0.12.tar.gz
+8959b0c1de3716481f0543f2b26f7c4fd3f7d38403eb53f03332571a7d405504db4912e82213ec47bfa19fbf342e1c6452718308085f7a74b273d472251878c1  neosurf-0.14.tar.gz
+8a23df9572113dd8665ee3402935081154fb69dbe4b8acef3b4f839b7a65883fbb3a699d726ca663aab8495aa8c7f01db183c628c7eb184839e0e711af8a00a8  file.patch
 "
