@@ -1,25 +1,25 @@
 # Contributor: Miles Alan <m@milesalan.com>
 # Maintainer: ScrumpyJack <scrumpyjack@st.ilet.to>
 pkgname=neosurf
-pkgver=0.14
-_commit="433dafd46bc486bc8f5af93355787674d83105d0"
+pkgver=14
 pkgrel=0
 pkgdesc="A NetSurf fork with various improvements"
 url="https://github.com/CobaltBSD/neosurf/"
 arch="all"
 license="GPL-2.0"
-makedepends="cmake gperf flex bison pkgconf libxml2-dev libjpeg-turbo-dev curl-dev libpsl-dev libwebp-dev gtk+3.0-dev bash libpng-dev libxkbcommon-dev wayland-protocols wayland-dev expat-dev openssl-dev perl"
-#subpackages="$pkgname-gtk3"
+makedepends="cmake gperf flex bison pkgconf libxml2-dev libjpeg-turbo-dev curl-dev libpsl-dev libwebp-dev gtk4.0-dev gtk+3.0-dev bash libpng-dev libxkbcommon-dev wayland-protocols wayland-dev expat-dev openssl-dev perl"
+subpackages="$pkgname-gtk"
 options="!check" # no tests
-#source="$pkgname-$_commit.tar.gz::https://github.com/CobaltBSD/neosurf/archive/$_commit.tar.gz"
+
 source="
-$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/archive/refs/tags/v$pkgver.tar.gz
-file.patch
+$pkgname-$pkgver.tar.gz::https://github.com/CobaltBSD/neosurf/archive/refs/tags/$pkgver.tar.gz
 "
+builddir="$srcdir/$pkgname-$pkgver"
 
-
+# if building a specific commit, set _commit and comment other source/builddir lines
+#_commit="a620afd9f4a99000ff8e05ff45b78c651dc3d1a1"
+#source="$pkgname-$_commit.tar.gz::https://github.com/CobaltBSD/neosurf/archive/$_commit.tar.gz"
 #builddir="$srcdir"/$pkgname-$_commit
-#builddir="$srcdir/$pkgname-$pkgver"
 
 export CFLAGS="$CFLAGS -fcommon"
 
@@ -30,19 +30,17 @@ build() {
 	make -j1 DESTDIR="$pkgdir"
 }
 
-#gtk3() {
-#	amove /usr/bin/neosurf-gtk3
-#	amove /usr/share/neosurf-gtk3
-#}
+gtk() {
+	amove /usr/bin/neosurf-gtk
+	amove /usr/share/neosurf-gtk
+}
 
 package() {
 	cd build
-	#make install
 	make install DESTDIR="$pkgdir"
 }
 
 
 sha512sums="
-8959b0c1de3716481f0543f2b26f7c4fd3f7d38403eb53f03332571a7d405504db4912e82213ec47bfa19fbf342e1c6452718308085f7a74b273d472251878c1  neosurf-0.14.tar.gz
-8a23df9572113dd8665ee3402935081154fb69dbe4b8acef3b4f839b7a65883fbb3a699d726ca663aab8495aa8c7f01db183c628c7eb184839e0e711af8a00a8  file.patch
+613b23025b05543ae6e435cac0add523e2db49bbe789a32f5d277c75c4b8f69bb5a4657e5942c201eb8d4d70b266385ce7f29da5708336e00608e990625db804  neosurf-14.tar.gz
 "
