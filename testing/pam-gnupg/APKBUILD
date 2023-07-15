@@ -12,9 +12,8 @@ makedepends="autoconf automake linux-pam-dev libtool pkgconf"
 source="$pkgname-$pkgver.tar.gz::https://github.com/cruegge/pam-gnupg/archive/refs/tags/v$pkgver.tar.gz"
 
 build() {
-	export PREFIX=/usr
 	./autogen.sh
-	./configure
+	./configure --prefix=/usr
 	make
 }
 
