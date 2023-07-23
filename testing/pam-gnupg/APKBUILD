@@ -1,0 +1,28 @@
+# Contributor:
+# Maintainer:
+pkgname=pam-gnupg
+pkgver=0.4
+pkgrel=0
+pkgdesc="Unlock GnuPG keys on login"
+url="https://github.com/cruegge/pam-gnupg"
+arch="all"
+license="GPL-3.0-only"
+depends="linux-pam gpg"
+makedepends="autoconf automake linux-pam-dev libtool pkgconf"
+source="$pkgname-$pkgver.tar.gz::https://github.com/cruegge/pam-gnupg/archive/refs/tags/v$pkgver.tar.gz"
+
+build() {
+	export PREFIX=/usr
+	./autogen.sh
+	./configure
+	make
+}
+
+package() {
+	# Replace with proper package command(s)
+	DESTDIR=$pkgdir make install
+}
+
+sha512sums="
+c23c336d287b564aa0d585b15dc7093b7eb91e63dc9b4e40bae5c4aa841f9531655bc09d559230ba8b9f180a28dcc0d06a91ec51978fd04ece2a848bab87ca69  pam-gnupg-0.4.tar.gz
+"

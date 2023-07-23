@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=mutt-wizard
-pkgver=3.3.1_git
+pkgver=3.3.1_git20230719
 _commit=bdce679540573963fb1ec8997baef70fe389fd24
 pkgrel=0
 pkgdesc="Automatically sets up a neomutt-based minimal email system"
@@ -10,10 +10,8 @@ arch="all"
 license="GPL-3.0-or-later"
 depends="neomutt curl isync msmtp pass gettext"
 makedepends="make"
-checkdepends=""
-install=""
 subpackages="$pkgname-doc $pkgname-zsh-completion"
-source="$pkgname-$_commit.zip::https://github.com/LukeSmithxyz/mutt-wizard/archive/${_commit}.zip"
+source="$pkgname-$_commit.zip::https://github.com/LukeSmithxyz/mutt-wizard/archive/$_commit.zip"
 builddir="$srcdir/$pkgname-$_commit"
 
 package() {
